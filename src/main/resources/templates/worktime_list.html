@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style_global.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="style_attendance_list.css" media="all" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="global_nav">
+        <ul>
+          <li><a href="./userlist.html" class="nav_item">ユーザー管理</a></li>
+          <li><a href="./workplace.html" class="nav_item">勤務場所管理</a></li>
+          <li><a href="./worktime_list.html" class="nav_item">勤務時間集計</a></li>
+          <li><a href="./login.html" class="nav_item">ログアウト</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="main">
+      <div class="main_contents">
+        <div class="main_contents_title">
+          <h1 id="title">
+          <script>
+                var now =  new Date();
+
+                var year = now.getFullYear();
+                var month = now.getMonth() + 1;
+                document.write("<B>勤務時間集計一覧"+" "+year+"年"+month+"月"+"</B>");
+          </script>
+          </h1>
+        </div>
+        <button id="btn1">先月へ</button>
+        <button id="btn2">来月へ</button><br><br>
+        <script>
+                let title = document.getElementById('title');
+                let button1 = document.getElementById('btn1');
+                  button1.addEventListener('click',function(){
+                  if(month == 1){
+                    month == 12;
+                    year1 -= 1;
+                  }else{
+                    month -= 1;
+                  }
+                  title.textContent = "勤務時間集計一覧 "+year+"年"+month+"月";
+                });
+                let button2 = document.getElementById('btn2');
+                button2.addEventListener('click',function(){
+                  if(month == 1){
+                    month == 12;
+                    year1 += 1;
+                  }else{
+                    month += 1;
+                  }
+                  title.textContent = "勤務時間集計一覧 "+year+"年"+month+"月";
+                });
+        </script>
+        <div class="main_contents_body">
+        <table class="date-calender">
+          <tr>
+            <th>名前</th>
+            <th>勤務時間</th>
+          </tr>
+          <tr>
+              <td><a href="./attendance_history.html">山田太郎</a></td>
+              <td>50:00</td>
+          </tr>
+          <tr>
+            <td><a href="./attendance_history.html">名無し1</a></td>
+            <td>55:00</td>
+          </tr>
+          <tr>
+            <td><a href="./attendance_history.html">名無し2</a></td>
+            <td>85:00</td>
+          </tr>
+          <tr>
+            <td><a href="./attendance_history.html">名無し3</a></td>
+            <td>25:00</td>
+          </tr>
+        </table>
+        </div>
+      </div>
+    </div>
+   </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style_global.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="style_attendance_list.css" media="all" />
+  </head>
+  <body onload="showDate()">
+    <header class="header">
+      <nav class="global_nav">
+        <ul>
+          <li><a href="./workplace_list.html" class="nav_item">勤務場所一覧</a></li>
+          <li><a href="./kintai.html" class="nav_item">勤怠入力</a></li>
+          <li><a href="./workplace.html" class="nav_item">勤務場所登録</a></li>
+          <li><a href="./contact_address.html" class="nav_item">連絡先登録</a></li>
+          <li><a href="./attendance_history.html" class="nav_item">勤怠履歴一覧</a></li>
+          <li><a href="./working.html" class="nav_item">勤怠状況一覧</a></li>
+          <li><a href="./login.html" class="nav_item">ログアウト</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="main">
+      <div class="main_contents">
+        <div class="main_contents_title">
+          <h1 id="title">
+          <script>
+                var now =  new Date();
+
+                var year = now.getFullYear();
+                var year1 = year;
+                var month = now.getMonth() + 1;
+                var lastmonth = now.getMonth();
+                var day = now.getDate();
+                document.write("<B>勤怠履歴一覧"+" "+year+"/"+lastmonth+"/"+day+"~"+year1+"/"+month+"/"+day+"</B>");
+          </script>
+          </h1>
+        </div>
+        <button id="btn1">先月へ</button>
+        <button id="btn2">来月へ</button><br><br>
+        <script>
+                let title = document.getElementById('title');
+                let button1 = document.getElementById('btn1');
+                  button1.addEventListener('click',function(){
+                  if(lastmonth == 1){
+                    lastmonth = 12;
+                    year -= 1; 
+                  }else{
+                    lastmonth -= 1;
+                  }if(month == 1){
+                    month == 12;
+                    year1 -= 1;
+                  }else{
+                    month -= 1;
+                  }
+                  title.textContent = "勤怠履歴一覧 "+year+"/"+lastmonth+"/"+day+"~"+year1+"/"+month+"/"+day;
+                });
+                let button2 = document.getElementById('btn2');
+                  button2.addEventListener('click',function(){
+                  if(lastmonth == 12){
+                    lastmonth = 1;
+                    year += 1; 
+                  }else{
+                    lastmonth += 1;
+                  }if(month == 12){
+                    month == 1;
+                    year1 += 1;
+                  }else{
+                    month += 1;
+                  }
+                  title.textContent = "勤怠履歴一覧 "+year+"/"+lastmonth+"/"+day+"~"+year1+"/"+month+"/"+day;
+                });
+        </script>
+        <div class="main_contents_body">
+        <table class="date-calender">
+          <thead>
+          <tr>
+            <th>日時</th>
+            <th>勤務開始時間</th>
+            <th>勤務終了時間</th>
+          </tr>
+        </thead>
+        <tbody>          
+        </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+    <script src="SuperDate.js"></script>
+    <script src="attendanceHistory.js"></script>
+   </body>
+</html>
